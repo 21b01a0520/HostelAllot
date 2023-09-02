@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 135vh;
+
+        }
+        .container {
+            max-width: 850px;
+            padding: 28px;
+            margin: 0 28px;
+            height: 850px;
+            box-shadow:0 15px 20px #61045f;
+             /* #9fabb7; */
+        }
+
+        h2 {
+            font-size: 35px;
+
+            font-weight: 600;
+            text-align: left;
+            color: #2f4f4f;
+            padding-bottom: 8px;
+            border-bottom: 1px solid silver;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .input-box {
+            display: flex;
+            flex-wrap: wrap;
+            width: 50%;
+            padding-bottom: 15px;
+
+        }
+
+        .input-box:nth-child(2n) {
+            justify-content: end;
+
+        }
+
+        .input-box label,
+        .gender-title {
+            width: 95%;
+            color: #2f4f4f;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .gender-title
+        {
+            font-size: 25px;
+            margin-top: 5px;
+        }
+        .input-box input,select
+        {
+            height: 40px;
+            width: 95%;
+            padding: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        .input-box input,select
+        {
+            box-shadow: 0 3px 6px rgba(71, 65, 65, 0.2);
+        }
+        .gender-category
+        {
+            color:grey;
+            margin: 18px;
+        }
+        .gender-category label{
+            
+            font-size: 23px;
+        }
+        .gender-category label,.gender-category input{
+            cursor: pointer;
+        }
+        .button-container
+        {
+            margin-top: 20px;
+            width: 90%;
+            margin-left: 35px;
+        }
+        .button-container input{
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            display: block;
+            font-size: 20px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            background-image: linear-gradient(to right,#aa076b,#61045f);
+        }
+        .button-container button:hover
+        {
+            background-image: linear-gradient(to right,#61045f,#aa076b);
+        }
+        #rbtn
+        {
+            font-size: 40px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form name="f1" action="./RegisterServlet" method="post">
+            <h2> BED REGISTRATION FORM</h2>
+            <div class="content">
+                <div class="input-box">
+                    <label for="name">Hallticket Number</label>
+                    <input type="number" name="hno" id="hno" placeholder="Enter your Hallticket number" required>
+                </div>
+                <div class="input-box">
+                    <label for="srank">Eapcet Rank</label>
+                    <input type="number" name="srank" id="srank" placeholder="Enter your rank" required>
+                </div>
+                
+                <div class="input-box">
+                    <label for="name">Student Name</label>
+                    <input type="text" name="name" id="sname" placeholder="Enter your name" required>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="mail" placeholder="Enter your email" required>
+                </div>
+                <div class="input-box">
+                    <label for="phno">Phone Number</label>
+                    <input type="number" name="phno" id="spno" placeholder="Enter your phone number" required>
+                </div>
+                <div class="input-box">
+                    <label for="aadhar">Aadhar number</label>
+                        <input type="number" name="aadhar" id="aano" placeholder="Enter your Aadhar number" required>
+                </div>
+                <div class="input-box">
+                    <label for="branch">Branch</label>
+                    <select name="branch" id="drop" required>
+                        <option value="">Select branch</option>
+                        <option value="">CSE</option>
+                        <option value="">IT</option>
+                        <option value="">ECE</option>
+                    </select>
+                </div>
+                <label class="gender-title">Gender</label>
+                <div class="gender-category">
+                    <input type="radio" name="gender" id="rbtn" disabled><label for="">Male</label> <input type="radio" name="gender" id="rbtn"
+                        checked="checked" required> <label for="">Female</label>
+                </div>
+                <div class="input-box">
+                    <label for="hostel">Hostel Name</label>
+                    <select name="hostel" id="hname" required>
+                        <option value="">select hostel name</option>
+                        <option value="">Spoorthi</option>
+                        <option value="">Bhuvana</option>
+                        <option value="">Bhargavi</option>
+                        <option value="">Vaidehi</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="roomno">Room number</label>
+                    <select name="roomno" id="rno" required>
+                        <option value="">select roomno</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="bed">Bed number</label>
+                    <select name="bed" id="bno" required>
+                        <option value="">select bed no</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="fathname">Father Name</label>
+                    <input type="text" name="fathname" id="fname" placeholder="Enter your father name" required>
+                </div>
+                <div class="input-box">
+                    <label for="fphno">Phone Number</label>
+                    <input type="number" name="fphno" id="fpno" placeholder="Enter your phone number" required>
+                </div>
+                <div class="button-container">
+                   
+                    <input type="submit" value="Submit">
+                     <!-- <button onclick="reset()">Reset</button> -->
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function fun() {
+
+            let h_no = document.getElementById("hno").value
+            let hp = h_no.toString()
+            h_len = hp.length
+            if (h_len < 10 || h_len > 10) {
+                alert("Invalid hallticket number")
+                return false;
+            }
+            else {
+                if (hp[0] == 0) {
+                    alert("First digit should not be 0");
+                    return false;
+                }
+            }
+
+            /*  let stud=document.getElementById("sname").value
+              var letters = /^[A-Za-z]+$/;
+         if(!(stud.value.match(letters)))
+           {
+            alert("Invalid Nmae")
+           }*/
+
+            let sphone_no = document.getElementById("spno").value
+            let sp = sphone_no.toString()
+            sp_len = sp.length
+            if (sp_len < 10 || sp_len > 10) {
+                alert("Invalid student phone number")
+                return false;
+            }
+            else {
+                if (sp[0] == 0) {
+                    alert("First digit should not be 0")
+                    return false;
+                }
+            }
+            let fphone_no = document.getElementById("fpno").value
+            let fp = fphone_no.toString()
+            fphone_len = fp.length
+            if (fphone_len < 10 || fphone_len > 10) {
+                alert("Invalid Father phone number")
+                return false;
+            }
+            else {
+                if (fp[0] == 0) {
+                    alert("First digit should not be 0")
+                    return false;
+                }
+
+            }
+            let aadhar_no = document.getElementById("aano").value
+            let ano = aadhar_no.toString()
+            a_len = ano.length
+            if (as_len < 13 || a_len > 13) {
+                alert("Invalid Aadhar number")
+                return false;
+            }
+            else {
+                if (ano[0] == 0) {
+                    alert("First digit should not be 0")
+                    return false;
+                }
+            }
+
+
+        }
+    </script>
+
+</body>
+
+</html>

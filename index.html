@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Allotment</title>
+
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing:border-box;
+      font-family: sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    section nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+      background: whitesmoke;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 80px;
+    }
+    section nav .logo {
+        font-size: 35px;
+        color:royalblue;
+        margin: 5px 0;
+        cursor: pointer;
+        position: relative;
+        left: -4%;
+      }
+      section nav ul {
+        list-style: none;
+      }
+      section nav ul li {
+        display: inline-block;
+        margin: 5px 15px;
+      }
+      section nav ul li a {
+        font-size: 20px;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        transition: 0.2s;
+      }
+      section nav ul li a:hover {
+        border-radius: 50px;
+        color:rgb(208, 57, 211) ;
+        text-decoration: underline;
+      }
+      section nav .logo span {
+        color: peru;
+        text-decoration: underline;
+      }
+      .Home{
+        padding-top: 110px;
+      }
+      .slider{
+        width: 800px;
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .slides{
+        width: 800px;
+        height: 400px;
+        display: flex;
+      }
+      .slides input{
+        display: none;
+      }
+      .slide{
+        width: 800px;
+        transition: 1s;
+      }
+      .navigation-manual{
+        position: absolute;
+        width: 800px;
+        margin-top: -40px;
+        display: flex;
+        justify-content: center;
+      }
+      .manual-btn{
+        border: 2px solid black;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 1s;
+      }
+      .manual-btn:not(:last-child){
+        margin-right: 30px;
+      }
+      .manual-btn:hover{
+        background: black;
+      }
+      #radio1:checked ~ .first{
+        margin-left: 0;
+      }
+      #radio2:checked ~ .first{
+        margin-left: -800px;
+      }
+      #radio3:checked ~ .first{
+        margin-left: -1600px;
+      }
+      #radio4:checked ~ .first{
+        margin-left: -2400px;
+      }
+      .navigation-auto{
+        position: absolute;
+        width: 800px;
+        display: flex;
+        justify-content: center;
+        margin-top: -40px;
+      }
+      .navigation-auto div{
+        border: 2px solid black;
+        padding: 5px;
+        border-radius: 10px;
+        transition: 1s;
+      }
+      .navigation-auto div:not(:last-child){
+        margin-right: 30px;
+      }
+      #radio1:checked ~ .navigation-auto .auto-btn1{
+        background: black;
+      }
+      #radio2:checked ~ .navigation-auto .auto-btn2{
+        background: black;
+      }
+      #radio3:checked ~ .navigation-auto .auto-btn3{
+        background: black;
+      }
+      #radio4:checked ~ .navigation-auto .auto-btn4{
+        background: black;
+      }
+      .title p{
+        font-weight: bold;
+        font-size: 50px;
+        color:rgb(27, 27, 240);
+      }     
+      .guidelines p{
+        padding-top: 10px;
+        font-size: 50px;
+        font-weight: bold;
+        padding-left: 30px;
+        font-family:'Times New Roman', Times, serif;
+      }
+      
+      .about_hostel{
+        font-size: 25px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+      }
+      .Home .col{
+        padding-left: 25px;
+      }
+      .tab{
+        margin-bottom: 35px;
+      }
+      .guidelines ul li{
+        padding-left: 120px;
+        padding-top: 40px;
+        font-size: 20px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-decoration:wavy;
+      }
+      .facilities .head{
+        padding-top: 50px;
+        font-size: 50px;
+        font-weight: bold;
+        padding-left: 30px;
+        font-family:'Times New Roman', Times, serif;
+      }
+      .facilities .container .card img{
+        width: 350px;
+        height: 350px;
+      }
+      .container{
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        height: 100vh;
+        padding-left: 30px;
+        padding-top: 40px;
+      }
+      .card{
+        height: 500px;
+        margin: 50px;
+        box-shadow: 5px 5px 20px black;
+        overflow: hidden;
+      }
+      .intro{
+        height: 70px;
+        width: 350px;
+      }
+      .intro h1{
+        padding-top: 25px;
+        padding-bottom: 15px;
+      }
+      .intro p{
+        padding-bottom: 20px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 15px;
+      }
+      footer{
+        width: 100%;
+        padding-top: 550px;
+        display: flex;
+      }
+      footer .tag{
+        background: linear-gradient(45deg, #fdba61, #ff5acd);
+        color: rgb(22, 20, 20);
+        width: 70%;
+        height: 300px;
+        padding-left: 10px;
+      }
+      footer .tag h1{
+        padding-top: 10px;
+        padding-left: 20px;
+      }
+      footer .tag p{
+        padding-left: 60px;
+      }
+    </style>
+<body>
+    <section>
+        <nav>
+          <div class="logo">
+            <h1>Hostel <span>Allotment</span></h1>
+          </div>
+          <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Facilities">Facilities</a></li>
+            <li><a href="registrationform.html">Hostels</a></li>
+            <li><a href="#Guidelines">Guidelines</a></li>
+            <li><a href="#Contact_us">Contact Us</a></li>
+          </ul>
+        </nav>
+    </section> 
+    <div class="Home" id="Home">
+      <table class="tab">
+        <tr>
+          <td class="col"> 
+             <div class="title">
+                 <p>Shri Vishnu Engineering College For Women</p>
+             </div>
+          </td>
+        <td>
+             <div class="slider">
+                <div class="slides">
+                 <input type="radio" name="radio-btn" id="radio1">
+                 <input type="radio" name="radio-btn" id="radio2">
+                 <input type="radio" name="radio-btn" id="radio3">
+                 <input type="radio" name="radio-btn" id="radio4">
+                 <div class="slide first">
+                      <img src="hostels1.jpg" width="800px" height="400px">
+                 </div>
+                <div class="slide">
+                     <img src="hostels2.jpg" width="800px" height="400px">
+                </div>
+                <div class="slide">
+                    <img src="hostels3.jpg" width="800px" height="400px">
+               </div>
+               <div class="slide">
+                   <img src="hostels4.jpg" width="800px" height="400px">
+               </div>
+              <div class="navigation-auto">
+                  <div class="auto-btn1"></div>
+                  <div class="auto-btn2"></div>
+                  <div class="auto-btn3"></div>
+                  <div class="auto-btn4"></div>
+             </div>
+          </div>
+          <div class="navigation-manual">
+                <label for="radio1" class="manual-btn" ></label>
+               <label for="radio2" class="manual-btn"></label>
+               <label for="radio3" class="manual-btn"></label>
+               <label for="radio4" class="manual-btn"></label>
+           </div>
+        </div>
+      </td>
+      </tr>
+    </table>
+    <p class="about_hostel">
+      
+    </p>
+  </div>
+   <div class="guidelines" id="Guidelines">
+       <p>Guidelines :</p>
+       <ul>
+        <li>-> Students should observe strict discipline and timings in the Hostel.</li>
+        <li>-> Students are not allowed to stay in the Hostel during college hours.</li>
+        <li>-> RAGGING in any form in the Hostel premises or in the Campus is an offence</li>
+        <li>-> All the entrance gates of the Hostel shall be closed at 9:00 P.M.</li>
+        <li>-> Parents or their authorized guardians with I.D. cards are permitted to visit the hostel between 9.00 am and 6.00pm only on holidays.</li>
+        <li>-> Defacing the walls or the doors should be avoided.</li>
+        <li>->Boarders shall not give tips to Hostel staff.</li>
+       </ul>
+   </div>
+   <div class="facilities" id="Facilities">
+    <p class="head">Facilities :</p>
+    <div class="container">
+      <div class="card">
+        <img src="gym.jpg">
+        <div class="intro">
+          <h1>Gym</h1>
+          <p>Vishnu Fitness Center provides sophisticated modern equipment which improves the physical fitness for sound health.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="foodcourt.jpg">
+        <div class="intro">
+          <h1>Food Court</h1>
+          <p>Food Courts offer both modern and traditional food items in the campus. These food courts are open from 6.30a.m. to 8.30p.m. </p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="ATM.jpg">
+        <div class="intro">
+          <h1>ATM</h1>
+          <p>Indian Bank was exclusively runs for the students and employees of SVES. Apart from it, there are two ATMs.</p>
+        </div>
+      </div>  
+      <div class="card">
+        <img src="library.jpg">
+        <div class="intro">
+          <h1>Library</h1>
+          <p>Indian Bank was exclusively runs for the students and employees of SVES. Apart from it, there are two ATMs.</p>
+        </div>
+      </div>  
+      <div class="card">
+        <img src="powerbackup.jpg">
+        <div class="intro">
+          <h1>Power Backup</h1>
+          <p>SVECW procured generators to provide the necessary electricity backup and ensure that work goes on smoothly in the campus.</p>
+        </div>
+      </div>    
+      <div class="card">
+        <img src="wifi.jpg">
+        <div class="intro">
+          <h1>WIFI</h1>
+          <p>SVECW has IT Infrastructure that can support 3000+ computer terminals, probably one of the largest wi-fi infrastructure.</p>
+        </div>
+      </div>      
+  </div>
+  <footer>
+      <div class="tag" id="Contact_us">
+        <h1>Contact Us :</h1><br>
+        <p class="main">SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN(Autonomous)<br></p>
+        <p>APPROVED BY A.I.C.T.E & AFFILIATED TO JNTUK, KAKINADA<br>Counselling Code - VISW<br>
+        Vishupur,BHIMAVARAM-534202<br>West Godavari District,Andhra Pradesh, India.<br><br><br></p>
+        <p><bold>Phone:</bold> 08816-250864</p>
+        <p><bold>Fax:</bold> 08816-250099</p>
+        <p><bold>Email:</bold> info@svecw.edu.in,priciple@svecw.edu.in</p>       
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.1666146608172!2d81.51990931478478!3d16.56811898857441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37cd4eb220051d%3A0xea3d7b50d0a1458!2sShri%20Vishnu%20Engineering%20College%20Autonomous!5e0!3m2!1sen!2sin!4v1669296313757!5m2!1sen!2sin" width="450px" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+  </footer>
+   
+
+    <script>
+      var counter=1;
+      setInterval(function(){
+        document.getElementById('radio'+counter).checked=true;
+        counter++;
+        if(counter>4){
+          counter=1
+        }
+      },5000);
+    </script>
+</body>
+</html>
